@@ -7,6 +7,7 @@ public class Planes {
 	private String company;
 	private int stand;
 	private String colour;
+	
 
 	public Planes() {
 		super();

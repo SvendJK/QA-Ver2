@@ -28,9 +28,9 @@ public class Choice {
 				// switch case to match which CRUD operation to perform
 				switch (crud.toLowerCase()) {
 				case "create":
+					System.out.println("Do not worry about entering an ID, they are auto allocated.");
 					System.out.println("Enter company: ");
 					String com = sc.nextLine();
-					pla.setCompany(com);
 					System.out.println("Enter stand: ");
 					int stand = sc.nextInt();
 					sc.nextLine();
@@ -54,22 +54,21 @@ public class Choice {
 					System.out.println("Enter id of record to delete: ");
 					int id = sc.nextInt();
 					sc.nextLine();//capture enter key
-					q.delete(id);
+					q.delete(new Planes (id, null, 0 , null));
 					break;
 				case "searchbyid":
 					System.out.println("Enter id of record to search: ");
 					int sid = sc.nextInt();
 					sc.nextLine();//capture enter key
-					q.readByID(sid);
+					q.readByID(new Planes (sid, null, 0 , null));
 					break;	
 				case "searchbyname":
 					System.out.println("Enter company name of record to search: ");
 					String nameSearch = sc.nextLine();
-					sc.nextLine();//capture enter key
-					q.readByName(nameSearch);
+					q.readByName(new Planes (nameSearch, 0 , null));
 					break;	
 				case "list":
-					System.out.println("create, read, update, searchbyid, searchbyname");
+					System.out.println("create, read, update, delete, searchbyid, searchbyname");
 					break;	
 					
 				default:

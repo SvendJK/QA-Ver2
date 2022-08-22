@@ -17,15 +17,7 @@ public static void setup() {
 }
 
 @Test
-public void testCreate() {
-	Planes testPlane = new Planes("testCompany", 1, "testColour");
-	cq.create(testPlane);
-	assertEquals("testCompany", testPlane.getCompany());
-	assertEquals(1, testPlane.getStand());
-	assertEquals("testColour", testPlane.getColour());
-}
-@Test
-public void testCreateWithID() {
+public void testGettersAndSetters() {
 	Planes testPlane = new Planes(1000,"testCompany", 1, "testColour");
 	cq.create(testPlane);
 	assertEquals(1000, testPlane.getId());
@@ -34,12 +26,18 @@ public void testCreateWithID() {
 	assertEquals("testColour", testPlane.getColour());
 }
 
+@Test
+public void testCreate() {
+	Planes testPlane = new Planes(1000,"testCompany", 1, "testColour");
+	String result = cq.create(testPlane);
+	assertEquals("INSERT INTO planes(company, stand, colour) VALUES('testCompany',1,'testColour');", result);
+}
 
 
 
 @Test
-public void testSetID( ) {
-	
+public void testReadById( ) {
+	Planes testPlane = new Planes(1234,"testCompany", 1, "testColour");
 	
 	
 }

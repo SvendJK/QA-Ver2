@@ -25,6 +25,7 @@ public class CRUDqueries {
 			conn = DriverManager.getConnection(DBconfig.URL, DBconfig.USER, DBconfig.PASS);
 			this.stmt = conn.createStatement();// create a statement object to execute sql queries
 			System.out.println("Connection Successful!");
+			
 		} catch (SQLException e) {
 			System.out.println("Incorrect credentials");
 			e.printStackTrace();
@@ -38,7 +39,7 @@ public class CRUDqueries {
 	// DELETE
 
 	// CREATE - INSERT INTO .... -> returns nothing, just says "query ok"
-	public void create(Planes p) {
+	public String create(Planes p) {
 
 //	public void create(String model, int mileage, String vehicleType, int doors) {
 		// info to collect to pass into the database
@@ -54,10 +55,13 @@ public class CRUDqueries {
 		try {
 			stmt.executeUpdate(createStmt);
 			System.out.println("Create statement executed");
+			return createStmt;
 		} catch (SQLException e) {
 			System.out.println("Bad query");
 			System.out.println(createStmt);
 			e.printStackTrace();
+			return null;
+			
 		}
 	}
 
@@ -97,14 +101,16 @@ public class CRUDqueries {
 	}
 
 	// DELETE - DELETE ..... -> executeUpdate
-	public void delete(int id) {
-		String delStmt = "DELETE FROM planes WHERE id=" + id + ";";
+	public String delete(Planes p) {
+		String delStmt = "DELETE FROM planes WHERE id=" + p.getId() + ";";
 		try {
 			stmt.executeUpdate(delStmt);
 			System.out.println("Delete statement executed");
+			return delStmt;
 		} catch (SQLException e) {
 			System.out.println("Bad query");
 			e.printStackTrace();
+			return null;
 		}
 
 	}
@@ -121,8 +127,9 @@ public class CRUDqueries {
 	}
 	
 	
-	public void readByID(int id) {
-		String read = "SELECT * FROM planes WHERE ID =" +id;
+	public String readByID(Planes p) {
+		String read = "SELECT * FROM planes WHERE ID =" + p.getId();
+		
 		try {
 			rs = stmt.executeQuery(read);
 			while (rs.next()) {
@@ -131,17 +138,21 @@ public class CRUDqueries {
 				System.out.println("Stand: " + rs.getInt("stand"));
 				System.out.println("Colour " + rs.getString("colour"));
 				System.out.println("-----------------------------------");
+				
 
 			}
+			
+			return read;
 		} catch (SQLException e) {
 			System.out.println("Bad query");
 			e.printStackTrace();
+			return null;
 		}
 	}
 	
 	
-	public void readByName(String company) {
-		String read = "SELECT * FROM planes WHERE company = '" +company + "'" ;
+	public void readByName(Planes p) {
+		String read = "SELECT * FROM planes WHERE company = '" +p.getCompany() + "'" ;
 		try {
 			rs = stmt.executeQuery(read);
 			while (rs.next()) {
