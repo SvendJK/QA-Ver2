@@ -8,6 +8,16 @@ public class FlightSchedule{
 	
 	
 	
+	public FlightSchedule(int id, String company, int stand, String takeoffTimeEst) {
+		super();
+		this.id = id;
+		this.company = company;
+		this.stand = stand;
+		this.takeoffTimeEst = takeoffTimeEst;
+	}
+
+
+
 	public FlightSchedule(String company, int stand, String takeoffTimeEst) {
 		super();
 		this.company = company;

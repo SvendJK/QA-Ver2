@@ -6,9 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.svend.planes.dao.DBconfig;
 import com.svend.planes.domain.FlightSchedule;
 
-public class FlightScheduleController {
+public class FlightScheduleController extends DBconfig {
 
 	// To carry out CRUD queries - where we connect to the the db
 	// Four main things needed:
