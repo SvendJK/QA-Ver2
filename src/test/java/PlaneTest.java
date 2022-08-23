@@ -3,12 +3,12 @@ import static org.junit.Assert.assertEquals;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.svend.planes.controller.CRUDqueries;
+import com.svend.planes.controller.PlanesController;
 import com.svend.planes.domain.Planes;
 
 
-public class CRUDqueriesTest {
-CRUDqueries cq = new CRUDqueries();
+public class PlaneTest {
+PlanesController cq = new PlanesController();
 
 
 @BeforeClass
@@ -51,7 +51,7 @@ public void testDelete( ) {
 	
 	Planes testPlane = new Planes(100, "Company Delete", 32, "NoColourDeleteImminent"); 
 	cq.create(testPlane);// create a new object, so we can create a new record that is going to be deleted
-	;
+	
 	System.out.println("HERE " + testPlane.getId()); 
 	assertEquals("DELETE FROM planes WHERE id=" + testPlane.getId() + ";", cq.delete(testPlane));
 	
@@ -79,7 +79,13 @@ public void testConnOpen( ) {
 	
 }
 
-
+@Test
+public void testTostring() {
+	Planes p = new Planes(0, "testcompany", 2, "testcolour");
+	String out = "Planes [id=0, company=testcompany, stand=2, colour=testcolour]";
+	assertEquals(out, p.toString());
+	System.out.println("Test 2");
+}
 }
 
 

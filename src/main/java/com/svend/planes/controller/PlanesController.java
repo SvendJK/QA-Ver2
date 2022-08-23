@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 import com.svend.planes.domain.Planes;
 
-public class CRUDqueries {
+public class PlanesController {
 
 	// To carry out CRUD queries - where we connect to the the db
 	// Four main things needed:
@@ -22,7 +22,7 @@ public class CRUDqueries {
 	private ResultSet rs; // Crucial for when returning multiple rows from a database table
 
 	// open connection in the constructor - initialises everything
-	public CRUDqueries() {
+	public PlanesController() {
 		try {
 			conn = DriverManager.getConnection(DBconfig.URL, DBconfig.USER, DBconfig.PASS);
 			this.stmt = conn.createStatement();// create a statement object to execute sql queries
@@ -57,6 +57,7 @@ public class CRUDqueries {
 		try {
 			stmt.executeUpdate(createStmt);
 			System.out.println("Create statement executed");
+			
 			return p;
 		} catch (SQLException e) {
 			System.out.println("Bad query");
