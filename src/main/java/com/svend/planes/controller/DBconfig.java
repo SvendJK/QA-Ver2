@@ -1,4 +1,4 @@
-package controller;
+package com.svend.planes.controller;
 
 public class DBconfig {
 	//Connect to database, we need 3 things:

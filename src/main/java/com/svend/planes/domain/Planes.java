@@ -1,4 +1,4 @@
-package domain;
+package com.svend.planes.domain;
 
 public class Planes {
 

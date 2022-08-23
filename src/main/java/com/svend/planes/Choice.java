@@ -2,8 +2,8 @@ package com.svend.planes;
 
 import java.util.Scanner;
 
-import controller.CRUDqueries;
-import domain.Planes;
+import com.svend.planes.controller.CRUDqueries;
+import com.svend.planes.domain.Planes;
 
 public class Choice {
 

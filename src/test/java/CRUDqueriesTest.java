@@ -3,8 +3,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import controller.CRUDqueries;
-import domain.Planes;
+import com.svend.planes.controller.CRUDqueries;
+import com.svend.planes.domain.Planes;
 
 
 public class CRUDqueriesTest {

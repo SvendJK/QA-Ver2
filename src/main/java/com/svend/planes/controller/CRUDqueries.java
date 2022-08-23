@@ -1,4 +1,4 @@
-package controller;
+package com.svend.planes.controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import domain.Planes;
+import com.svend.planes.domain.Planes;
 
 public class CRUDqueries {
 
