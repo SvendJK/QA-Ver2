@@ -2,6 +2,9 @@ package com.svend.planes;
 
 import java.util.Scanner;
 
+import controller.CRUDqueries;
+import domain.Planes;
+
 public class Choice {
 
 	private static Scanner sc = new Scanner(System.in);
@@ -60,12 +63,12 @@ public class Choice {
 					System.out.println("Enter id of record to search: ");
 					int sid = sc.nextInt();
 					sc.nextLine();//capture enter key
-					q.readByID(new Planes (sid, null, 0 , null));
+					q.readByID(new Planes (sid));
 					break;	
 				case "searchbyname":
 					System.out.println("Enter company name of record to search: ");
 					String nameSearch = sc.nextLine();
-					q.readByName(new Planes (nameSearch, 0 , null));
+					q.readByName(new Planes (nameSearch));
 					break;	
 				case "list":
 					System.out.println("create, read, update, delete, searchbyid, searchbyname");

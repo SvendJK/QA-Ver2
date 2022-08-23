@@ -1,10 +1,12 @@
-package com.svend.planes;
+package controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import domain.Planes;
 
 public class CRUDqueries {
 
@@ -39,7 +41,7 @@ public class CRUDqueries {
 	// DELETE
 
 	// CREATE - INSERT INTO .... -> returns nothing, just says "query ok"
-	public String create(Planes p) {
+	public Planes create(Planes p) {
 
 //	public void create(String model, int mileage, String vehicleType, int doors) {
 		// info to collect to pass into the database
@@ -55,7 +57,7 @@ public class CRUDqueries {
 		try {
 			stmt.executeUpdate(createStmt);
 			System.out.println("Create statement executed");
-			return createStmt;
+			return p;
 		} catch (SQLException e) {
 			System.out.println("Bad query");
 			System.out.println(createStmt);
@@ -66,36 +68,40 @@ public class CRUDqueries {
 	}
 
 	// READ - SELECT ..... -> executeQuery
-	public void read() {
+	public String read() {
 		String readStmt = "SELECT * FROM planes;";
+		Planes pl = new Planes();
 		try {
 			rs = stmt.executeQuery(readStmt);
 			while (rs.next()) {
-				System.out.println("ID: " + rs.getInt("id"));
-				System.out.println("Company: " + rs.getString("company"));
-				System.out.println("Stand: " + rs.getInt("stand"));
-				System.out.println("Colour " + rs.getString("colour"));
-				System.out.println("-----------------------------------");
+				pl.setId(rs.getInt("id"));
+				pl.setCompany(rs.getString("company"));
+				pl.setStand(rs.getInt("stand"));
+				pl.setColour(rs.getString("colour"));
+				System.out.println(pl.toString()); 
 				
 			}
-
+			return readStmt;
 		} catch (SQLException e) {
 			System.out.println("Bad query");
 			e.printStackTrace();
+			return null;
 		}
 	}
 
 	// UPDATE - UPDATE ..... -> executeUpdate
-	public void update(Planes p) {
+	public String update(Planes p) {
 //		UPDATE vehicle SET model = "chevy" WHERE id = 2;
 		String updateStmt = "UPDATE planes SET colour = '" + p.getColour() + "' WHERE id = " + p.getId() + ";";
 		try {
 			stmt.executeUpdate(updateStmt);
 			System.out.println("Update statement executed");
+			return updateStmt;
 			
 		}catch (SQLException e) {
 			System.out.println("Bad query");
 			e.printStackTrace();
+			return null;
 		}
 
 	}
@@ -116,33 +122,37 @@ public class CRUDqueries {
 	}
 
 	// close the connection
-	public void closeConn() {
+	public Boolean closeConn() {
+		Boolean isClosed;
 		try {
 			conn.close();
 			System.out.println("Closed!");
+			isClosed=true;
 		} catch (SQLException e) {
 			System.out.println("Closing connection...");
 			e.printStackTrace();
+			isClosed=false;
 		}
+		return isClosed;
+		
 	}
 	
 	
-	public String readByID(Planes p) {
+	public Planes readByID(Planes p) {
 		String read = "SELECT * FROM planes WHERE ID =" + p.getId();
-		
+		Planes pl = new Planes();
 		try {
 			rs = stmt.executeQuery(read);
 			while (rs.next()) {
-				System.out.println("ID: " + rs.getInt("id"));
-				System.out.println("Company: " + rs.getString("company"));
-				System.out.println("Stand: " + rs.getInt("stand"));
-				System.out.println("Colour " + rs.getString("colour"));
-				System.out.println("-----------------------------------");
+				pl.setId(rs.getInt("id"));
+				pl.setCompany(rs.getString("company"));
+				pl.setStand(rs.getInt("stand"));
+				pl.setColour(rs.getString("colour"));
+				System.out.println(pl.toString()); 
 				
-
+				
 			}
-			
-			return read;
+			return pl;
 		} catch (SQLException e) {
 			System.out.println("Bad query");
 			e.printStackTrace();
@@ -151,21 +161,24 @@ public class CRUDqueries {
 	}
 	
 	
-	public void readByName(Planes p) {
+	public Planes readByName(Planes p) {
 		String read = "SELECT * FROM planes WHERE company = '" +p.getCompany() + "'" ;
+		Planes pl = new Planes();
 		try {
 			rs = stmt.executeQuery(read);
 			while (rs.next()) {
-				System.out.println("ID: " + rs.getInt("id"));
-				System.out.println("Company: " + rs.getString("company"));
-				System.out.println("Stand: " + rs.getInt("stand"));
-				System.out.println("Colour " + rs.getString("colour"));
-				System.out.println("-----------------------------------");
+				pl.setId(rs.getInt("id"));
+				pl.setCompany(rs.getString("company"));
+				pl.setStand(rs.getInt("stand"));
+				pl.setColour(rs.getString("colour"));
+				System.out.println(pl.toString()); 
 
 			}
+			return pl;
 		} catch (SQLException e) {
 			System.out.println("Bad query");
 			e.printStackTrace();
+			return null;
 		}
 	}
 	

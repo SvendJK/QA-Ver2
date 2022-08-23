@@ -3,8 +3,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.svend.planes.CRUDqueries;
-import com.svend.planes.Planes;
+import controller.CRUDqueries;
+import domain.Planes;
 
 
 public class CRUDqueriesTest {
@@ -28,17 +28,54 @@ public void testGettersAndSetters() {
 
 @Test
 public void testCreate() {
-	Planes testPlane = new Planes(1000,"testCompany", 1, "testColour");
-	String result = cq.create(testPlane);
-	assertEquals("INSERT INTO planes(company, stand, colour) VALUES('testCompany',1,'testColour');", result);
+	Planes testPlane = new Planes("testCompany", 1, "testColour");
+	Planes result = cq.create(testPlane);
+	assertEquals("Planes [id="+testPlane.getId() +", company=testCompany, stand=1, colour=testColour]", result.toString());
 }
 
-
+@Test
+public void testRead() {
+	String result = cq.read();
+	assertEquals("SELECT * FROM planes;", result);
+}
 
 @Test
-public void testReadById( ) {
-	Planes testPlane = new Planes(1234,"testCompany", 1, "testColour");
+public void testUpdate( ) {
+	Planes testPlane = new Planes(1,null, 1, "testColourForUpdate");
+	assertEquals("UPDATE planes SET colour = '" + "testColourForUpdate" + "' WHERE id = " + 1 + ";", cq.update(testPlane));
 	
+}
+
+@Test
+public void testDelete( ) {
+	
+	Planes testPlane = new Planes(100, "Company Delete", 32, "NoColourDeleteImminent"); 
+	cq.create(testPlane);// create a new object, so we can create a new record that is going to be deleted
+	;
+	System.out.println("HERE " + testPlane.getId()); 
+	assertEquals("DELETE FROM planes WHERE id=" + testPlane.getId() + ";", cq.delete(testPlane));
+	
+}
+
+@Test
+public void testReadByID( ) {
+	
+	Planes testPlane = new Planes(1); 
+	assertEquals("Planes [id=1, company=BA, stand=0, colour=testColourForUpdate]", cq.readByID(testPlane).toString());
+	
+}
+
+@Test
+public void testReadByName( ) {
+	
+	Planes testPlane = new Planes("Jet2"); 
+	assertEquals("Planes [id=5, company=jet2, stand=23, colour=red]", cq.readByName(testPlane).toString());
+	
+}
+@Test
+public void testConnOpen( ) {
+	
+	assertEquals(true,cq.closeConn());
 	
 }
 

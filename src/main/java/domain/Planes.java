@@ -1,4 +1,4 @@
-package com.svend.planes;
+package domain;
 
 public class Planes {
 
@@ -12,6 +12,22 @@ public class Planes {
 	public Planes() {
 		super();
 	}
+	
+	
+
+	public Planes(String company) {
+		super();
+		this.company = company;
+	}
+
+
+
+	public Planes(int id) {
+		super();
+		this.id = id;
+	}
+
+
 
 	public Planes(int id, String company, int stand, String colour) {
 		super();
