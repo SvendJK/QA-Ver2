@@ -62,7 +62,7 @@ public class Choice {
 						System.out.println("Do not worry about entering an ID, they are auto allocated.");
 						System.out.println("Enter company: ");
 						String com = sc.nextLine();
-						System.out.println("Enter stand: ");
+						System.out.println("Enter Runway: ");
 						int stand = sc.nextInt();
 						sc.nextLine();
 						System.out.println("Enter estimated takeoff time: ");

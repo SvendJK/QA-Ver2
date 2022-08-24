@@ -50,7 +50,7 @@
 						<manifest>
 							<!-- COMMENT: the mainClass should point to where your Runner is in 
 								the project -->
-							<mainClass>com.qa.garage.Runner</mainClass>
+							<mainClass>com.svend.planes.Runner</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

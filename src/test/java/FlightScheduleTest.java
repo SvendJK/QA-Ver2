@@ -30,7 +30,7 @@ public class FlightScheduleTest {
 		cq.create(testPlane);
 		assertEquals(1000, testPlane.getId());
 		assertEquals("testCompany", testPlane.getCompany());
-		assertEquals(1, testPlane.getStand());
+		assertEquals(1, testPlane.getRunway());
 		assertEquals("testTime", testPlane.getTakeoffTimeEst());
 	}
 
@@ -38,7 +38,7 @@ public class FlightScheduleTest {
 	public void testCreate() {
 		FlightSchedule testFlight = new FlightSchedule("testCompany", 1, "testDepartureTime");
 		FlightSchedule result = cq.create(testFlight);
-		assertEquals("FlightSchedule [id=0, company=testCompany, stand=1, takeoffTimeEst=testDepartureTime]", result.toString());
+		assertEquals("FlightSchedule [id=0, company=testCompany, runway=1, takeoffTimeEst=testDepartureTime]", result.toString());
 	}
 	
 	@Test
@@ -67,7 +67,7 @@ public class FlightScheduleTest {
 	public void testReadByID( ) {
 		
 		FlightSchedule testFlight = new FlightSchedule(1); 
-		assertEquals("FlightSchedule [id=1, company=BA, stand=20, takeoffTimeEst=testColourForUpdate]", cq.readByID(testFlight).toString());
+		assertEquals("FlightSchedule [id=1, company=BA, runway=20, takeoffTimeEst=testColourForUpdate]", cq.readByID(testFlight).toString());
 		
 	}
 
@@ -75,7 +75,7 @@ public class FlightScheduleTest {
 	public void testReadByName( ) {
 		
 		FlightSchedule testFlight = new FlightSchedule("SAS"); 
-		assertEquals("FlightSchedule [id=18, company=SAS, stand=3, takeoffTimeEst=4pm]", cq.readByName(testFlight).toString());
+		assertEquals("FlightSchedule [id=18, company=SAS, runway=3, takeoffTimeEst=4pm]", cq.readByName(testFlight).toString());
 		
 	}
 	
@@ -89,7 +89,7 @@ public class FlightScheduleTest {
 	@Test
 	public void testTostring() {
 		FlightSchedule f = new FlightSchedule(0, "testcompany", 2, "testTime");
-		String out = "FlightSchedule [id=0, company=testcompany, stand=2, takeoffTimeEst=testTime]";
+		String out = "FlightSchedule [id=0, company=testcompany, runway=2, takeoffTimeEst=testTime]";
 		assertEquals(out, f.toString());
 		System.out.println("Test 2");
 	}

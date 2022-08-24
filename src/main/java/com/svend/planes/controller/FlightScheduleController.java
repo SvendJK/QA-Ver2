@@ -53,7 +53,7 @@ public class FlightScheduleController extends DBconfig {
 
 		// INSERT INTO vehicle(model, mileage, vehicle_type, doors)
 		// VALUES("tbc",30000,"Car",4);
-		String createStmt = "INSERT INTO flight_schedule(company, stand, take_off_time) VALUES('" + f.getCompany() + "'," + f.getStand()
+		String createStmt = "INSERT INTO flight_schedule(company, runway, take_off_time) VALUES('" + f.getCompany() + "'," + f.getRunway()
 				+ ",'" + f.getTakeoffTimeEst() + "');";
 		try {
 			stmt.executeUpdate(createStmt);
@@ -78,7 +78,7 @@ public class FlightScheduleController extends DBconfig {
 			while (rs.next()) {
 				fl.setId(rs.getInt("id"));
 				fl.setCompany(rs.getString("company"));
-				fl.setStand(rs.getInt("stand"));
+				fl.setRunway(rs.getInt("runway"));
 				fl.setTakeoffTimeEst(rs.getString("take_off_time"));
 				System.out.println(fl.toString()); 
 				
@@ -148,7 +148,7 @@ public class FlightScheduleController extends DBconfig {
 			while (rs.next()) {
 				fl.setId(rs.getInt("id"));
 				fl.setCompany(rs.getString("company"));
-				fl.setStand(rs.getInt("stand"));
+				fl.setRunway(rs.getInt("runway"));
 				fl.setTakeoffTimeEst(rs.getString("take_off_time"));
 				System.out.println(fl.toString()); 
 				
@@ -171,7 +171,7 @@ public class FlightScheduleController extends DBconfig {
 			while (rs.next()) {
 				fl.setId(rs.getInt("id"));
 				fl.setCompany(rs.getString("company"));
-				fl.setStand(rs.getInt("stand"));
+				fl.setRunway(rs.getInt("runway"));
 				fl.setTakeoffTimeEst(rs.getString("take_off_time"));
 				System.out.println(fl.toString()); 
 

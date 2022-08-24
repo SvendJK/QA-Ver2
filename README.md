@@ -4,15 +4,16 @@
 ##How to install?
 1. Clone the repo to a directory of your choice (using git clone)
 2. Verify that java is installed on your computer
-3. Open up a command prompt and navigate to cloned repo, ensuring you are located within the folder that holds the .jar file
-4. Type '''java -jar svendWithDependencies.java'''
+3. Open up a command prompt and navigate to cloned repo, ensuring you are located within the folder that holds the .jar file (/target)
+4. Type '''java -jar SvendProject-0.0.1-SNAPSHOT-jar-with-dependencies'''
 5. Enjoy!
 
 ##How to test?
 1. Clone the repo to a directory of your choice (using git clone)
 2. Open the Eclipse IDE and head to File > Import > Import Existing Maven Project and select the cloned git repo.
 3. Navigate to 'src/test/java' and right click on either test classes and click 'Run JUnit Test'
-4 Enjoy!
+4. Since there are two test classes, it might be easier to set the coverage configurations to run both test classes.
+5. Enjoy!
 
 
 #Screenshots

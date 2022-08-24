@@ -3,25 +3,25 @@ package com.svend.planes.domain;
 public class FlightSchedule{
 	private int id;
 	private String company;
-	private int stand;
+	private int runway;
 	private String takeoffTimeEst;
 	
 	
 	
-	public FlightSchedule(int id, String company, int stand, String takeoffTimeEst) {
+	public FlightSchedule(int id, String company, int runway, String takeoffTimeEst) {
 		super();
 		this.id = id;
 		this.company = company;
-		this.stand = stand;
+		this.runway = runway;
 		this.takeoffTimeEst = takeoffTimeEst;
 	}
 
 
 
-	public FlightSchedule(String company, int stand, String takeoffTimeEst) {
+	public FlightSchedule(String company, int runway, String takeoffTimeEst) {
 		super();
 		this.company = company;
-		this.stand = stand;
+		this.runway = runway;
 		this.takeoffTimeEst = takeoffTimeEst;
 	}
 	
@@ -73,11 +73,11 @@ public class FlightSchedule{
 	public void setCompany(String company) {
 		this.company = company;
 	}
-	public int getStand() {
-		return stand;
+	public int getRunway() {
+		return runway;
 	}
-	public void setStand(int stand) {
-		this.stand = stand;
+	public void setRunway(int runway) {
+		this.runway = runway;
 	}
 	public String getTakeoffTimeEst() {
 		return takeoffTimeEst;
@@ -90,7 +90,7 @@ public class FlightSchedule{
 
 	@Override
 	public String toString() {
-		return "FlightSchedule [id=" + id + ", company=" + company + ", stand=" + stand + ", takeoffTimeEst="
+		return "FlightSchedule [id=" + id + ", company=" + company + ", runway=" + runway + ", takeoffTimeEst="
 				+ takeoffTimeEst + "]";
 	}
 	
